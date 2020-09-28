@@ -49,8 +49,8 @@ for row in csv_death:
 #sitka
 for row in csv_sitka:
     try:
-        high_sitka = int(row[4])
-        low_sitka = int(row[5])
+        high_sitka = int(row[5])
+        low_sitka = int(row[6])
         current_date_sitka = datetime.strptime(row[2],'%Y-%m-%d' )
     except ValueError:
         print(f"Missing data for {current_date_sitka}")
@@ -77,7 +77,16 @@ ax[1].plot(dates_sitka, lows_sitka, c="blue", alpha=0.5)
 plt.title("Daily High and Low temperatures - 2018\nDeath Valley" , fontsize=16) #change title
 plt.xlabel("", fontsize=12)
 
-plt.fill_between(dates, highs, lows, facecolor= 'blue', alpha=0.1)
+plt.title("Daily High and Low temperatures - 2018\nSitka" , fontsize=16) #change title
+plt.xlabel("", fontsize=12)
+
+plt.title("Temperature comparison between SITKA AIRPORT, AK US  and DEATH VALLEY, CA US")
+
+plt.fill_between(dates_death, highs_death, lows_death, facecolor= 'blue', alpha=0.1)
+plt.ylabel("Temperature (F)", fontsize=12)
+plt.tick_params(axis="both", labelsize=12)
+
+plt.fill_between(dates_sitka, highs_sitka, lows_sitka, facecolor= 'blue', alpha=0.1)
 plt.ylabel("Temperature (F)", fontsize=12)
 plt.tick_params(axis="both", labelsize=12)
 
