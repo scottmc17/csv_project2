@@ -15,11 +15,13 @@ header_row = next(csv_death)
 
 header_row = next(csv_sitka)
 
-'''
-print(header_row)
 
+print(header_row)
+'''
 for index, column_header in enumerate(header_row):
     print(index,column_header)
+    if 5 = TMAX
+
 '''
 
 highs_death = []
@@ -65,29 +67,34 @@ for row in csv_sitka:
 import matplotlib.pyplot as plt 
 
 # make subplots
-fig, ax = plt.subplots(2,2)
+fig, ax = plt.subplots(2,1) #runs when its (1,2)
+
+ax[0].plot(dates_sitka, highs_sitka, c="red", alpha=0.5)    #add dates list to plot
+ax[0].plot(dates_sitka, lows_sitka, c="blue", alpha=0.5)
+ax[1].plot(dates_death, highs_death, c="red", alpha=0.5)    #add dates list to plot
+ax[1].plot(dates_death, lows_death, c="blue", alpha=0.5)
 
 
-ax[0].plot(dates_death, highs_death, c="red", alpha=0.5)    #add dates list to plot
-ax[0].plot(dates_death, lows_death, c="blue", alpha=0.5)
-ax[1].plot(dates_sitka, highs_sitka, c="red", alpha=0.5)    #add dates list to plot
-ax[1].plot(dates_sitka, lows_sitka, c="blue", alpha=0.5)
+#chart title #use ax
 
-#chart title
-plt.title("Daily High and Low temperatures - 2018\nDeath Valley" , fontsize=16) #change title
+ax[0].set_title("Temperature comparison between SITKA AIRPORT, AK US  and DEATH VALLEY, CA US \n \n  SITKA AIRPORT")
+
+
+plt.title("SITKA AIRPORT, AK US " , fontsize=16) #change title
+plt.ylabel("", fontsize=12)
+
+plt.title("DEATH VALLEY, CA US" , fontsize=16) #change title
 plt.xlabel("", fontsize=12)
 
-plt.title("Daily High and Low temperatures - 2018\nSitka" , fontsize=16) #change title
-plt.xlabel("", fontsize=12)
 
-plt.title("Temperature comparison between SITKA AIRPORT, AK US  and DEATH VALLEY, CA US")
+#plt.title("Temperature comparison between SITKA AIRPORT, AK US  and DEATH VALLEY, CA US")
 
-plt.fill_between(dates_death, highs_death, lows_death, facecolor= 'blue', alpha=0.1)
-plt.ylabel("Temperature (F)", fontsize=12)
+ax[1].fill_between(dates_death, highs_death, lows_death, facecolor= 'blue', alpha=0.1)
+#plt.ylabel("Temperature (F)", fontsize=12)
 plt.tick_params(axis="both", labelsize=12)
 
-plt.fill_between(dates_sitka, highs_sitka, lows_sitka, facecolor= 'blue', alpha=0.1)
-plt.ylabel("Temperature (F)", fontsize=12)
+ax[0].fill_between(dates_sitka, highs_sitka, lows_sitka, facecolor= 'blue', alpha=0.1)
+#plt.ylabel("Temperature (F)", fontsize=12)
 plt.tick_params(axis="both", labelsize=12)
 
 fig.autofmt_xdate()
